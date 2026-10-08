@@ -22,14 +22,16 @@
 
 ## 安装
 
-本插件尚未安装到任何 profile。安装需要改 `~/.dsh/profiles/web`，请在确认后手动执行。
+安装需要改动 profile，请在确认后手动执行。
 
 1. 在 profile 目录建立 link 依赖：
 
    ```bash
    cd ~/.dsh/profiles/web
-   pnpm add link:/home/coder/project/dsh-simple-bing
+   pnpm add link:<path-to-dsh-simple-bing>
    ```
+
+   `<path-to-dsh-simple-bing>` 换成你本地 clone 下来的插件目录。
 
 2. 把 `dsh-simple-bing` 加入 `~/.dsh/profiles/web/package.json` 的 `dsh.profile.bundles`。
 

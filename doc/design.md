@@ -2,9 +2,9 @@
 
 ## 目标
 
-从 `dsh-free-search` 里抽出 Bing 一条链路，做成一个只注册一个工具的独立插件。
+做成一个只注册一个工具的独立插件，链路是 Bing 搜索。
 
-用户确认的取法是「B」：
+插件按以下取法实现：
 
 - 插件自己注册一个工具 `bing_search`；
 - 完全不碰 DSH 的搜索 provider seam（`ctx.web.searchProvider`）；
@@ -29,11 +29,11 @@ test/
 
 ### 为什么是独立工具，而不是 provider
 
-provider seam 会让 DSH 自带的 `web_search` 走本插件。那属于「改核心搜索通道」，与「只保留一个工具、独立存在」不同。方案 B 下 `web_search` / `web_fetch` 保持原样，`bing_search` 是显式的第二条通道。
+provider seam 会让 DSH 自带的 `web_search` 走本插件。那属于「改核心搜索通道」，与「只保留一个工具、独立存在」不同。本插件下 `web_search` / `web_fetch` 保持原样，`bing_search` 是显式的第二条通道。
 
 ### 抓取层
 
-- 单次请求硬超时（`AbortController`），默认 12s；工具层再套一个总超时。
+- 单次请求硬超时（`AbortController`），默认 12s；工具层再套一个 20s 总超时。
 - 失败重试默认 3 次，间隔 1.5s，主要覆盖瞬时网络抖动。
 - 响应体小于 500 字节视为空响应，触发重试。
 - 命中反爬验证页（状态 202 或正文出现 captcha / unusual traffic 等）时抛出明确的限流错误，而不是返回空列表。
