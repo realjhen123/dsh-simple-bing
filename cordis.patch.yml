@@ -1,0 +1,12 @@
+# dsh-simple-bing — exactly one tool: bing_search
+# A keyless Bing HTML-scraping search tool. No search-provider takeover, no
+# web_fetch chain, no other tools. The plugin registers one model tool and
+# nothing else.
+- insert:
+    - id: simple-bing
+      name: dsh-simple-bing
+      config:
+        lang: zh
+        bingMarket: zh-CN
+        safeSearch: off
+        maxResults: 5

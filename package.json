@@ -1,0 +1,37 @@
+{
+  "name": "dsh-simple-bing",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Minimal DeepSeek Harness plugin exposing exactly one tool: bing_search (keyless Bing web search).",
+  "type": "module",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "src",
+    "cordis.patch.yml",
+    "README.md",
+    "doc"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test": "node --test test/",
+    "check": "node --check src/index.js && node --check src/config.js && node --check src/http.js && node --check src/bing.js && node --check src/tool.js && node --test test/"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "bing",
+    "web-search"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1",
+    "@deepseek-ai/dsh-tools": "^0.1.7-rc.1 || ^0.2.0-rc.1"
+  }
+}
